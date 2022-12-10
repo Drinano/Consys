@@ -1,13 +1,12 @@
 #Projeto Consys
 
-Endereço Herokuapp: https://projeto-consys.herokuapp.com/
+Endereço do projeto rodando em Herokuapp: https://projeto-consys.herokuapp.com/
 
  - Usuarios com acesso de Administrador:
-    - jacson
-    - Python@123
-
-      - roseli
-      - Python@123
+   - jacson
+   - Python@123
+   - roseli
+   - Python@123
 
 
 Usuarios comuns para efetuar reservas:

@@ -9,12 +9,12 @@ Endereço do projeto rodando em Herokuapp: https://projeto-consys.herokuapp.com/
    - Python@123
 
 
-Usuarios comuns para efetuar reservas:
-adriano
-Python@123
+ - Usuarios comuns para efetuar reservas:
+   - adriano
+   - Python@123
 
-william
-Python@123
+   - william
+   - Python@123
 
 
 ACADÊMICOS: Adriano Flavio Wronski, William Vinicios Borssoi

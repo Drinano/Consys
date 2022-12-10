@@ -1,13 +1,22 @@
 from django.contrib import admin
-from .models import Cliente, Reserva
-
+from .models import Cliente, ReservaVaga, ReservaSalao, Garagem
 
 # Register your models here.
 
 @admin.register(Cliente)
 class ClienteAdmin(admin.ModelAdmin):
-    list_display = ['id', 'nome_cliente', 'status', 'cpf_cliente', 'telefone_cliente', 'email_cliente']
+    list_display = ['id', 'nome', 'status', 'cpf', 'telefone', 'email']
 
-@admin.register(Reserva)
+@admin.register(ReservaVaga)
 class ReservaAdmin(admin.ModelAdmin):
-    list_display = ['id', 'usuario', 'cliente', 'modificacado_em', 'status', 'data_inicio','data_termino']
+    list_display = ['id', 'data_inicio', 'data_termino', 'tipo', 'obs']
+
+@admin.register(ReservaSalao)
+class ReservaAdmin(admin.ModelAdmin):
+    list_display = ['id', 'data_inicio', 'data_termino', 'tipo', 'obs']
+
+@admin.register(Garagem)
+class GaragemAdmin(admin.ModelAdmin):
+    list_display = ['id', 'vaga']
+
+

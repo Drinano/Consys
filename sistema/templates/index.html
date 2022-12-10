@@ -1,267 +1,1227 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block conteudo_janela %}
 {% load static %}
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>CONSYS - Sistema de Gerenciamento de Condominios</title>
-    <!-- CSS -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/estiloindex.css' %}">
-
-    <!-- JAVA -->
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-
-    <style>
-        .fixed-bottom {
-              position: fixed;
-              right: 0;
-              bottom: 0;
-              left: 0;
-              z-index: 1030;
-        }
-    </style>
-
-</head>
-<body>
-<!-- Inicio Topo -->
-<div>
-    <h1 id="area-logo"><strong>CON<span class="azul">SYS</span></strong></h1>
-    <p>Sistema de Gerenciamento de Condominios</p>
-</div>
-<!-- Fim Topo -->
-
-
-<!-- Inicio Menu -->
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <ul class="nav navbar-nav">
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Cliente<span
-                    class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Novo Cliente</a></li>
-                    <li><a href="#">Listar Clientes</a></li>
-                </ul>
-            </li>
-
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Locação<span
-                    class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#" data-toggle="modal" data-target="#vagaModal">Vaga de Garagens</a></li>
-                    <li><a href="#" data-toggle="modal" data-target="#salaoModal">Salão de Festas</a></li>
-                </ul>
-            </li>
-
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Reserva<span
-                    class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">À aprovar</a></li>
-                    <li><a href="#">Aprovados</a></li>
-                    <li><a href="#">Listar Reservas</a></li>
-                </ul>
-            </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="/logout/">Sair</a></li>
-        </ul>
-    </div>
-</nav>
-<!-- Fim Menu -->
-
-<!-- Alinhamento Centro Imagem -->
-<div class="container" style="margin-top:30px">
 
     <!-- Mapeamento Imagem -->
     <map name="minhaplanta">
-        <!-- Garagens Superior-->
 
-        <a href="#" data-toggle="modal" data-target="#vagaModal"><area shape="rect" coords="233,38,254,82" target="janela" alt="118" title="Vaga 118"/></a>
-        <a href="#" data-toggle="modal" data-target="#vagaModal"><area shape="rect" coords="254,38,276,82" target="janela" alt="419" title="Vaga 419"/></a>
-        <area shape="rect" coords="276,38,296,82" href="" target="janela" alt="420" title="Vaga 420"/>
-        <area shape="rect" coords="297,40,318,82" href="" target="janela" alt="214" title="Vaga 214"/>
-        <area shape="rect" coords="318,40,340,82" href="" target="janela" alt="219" title="Vaga 219"/>
-        <area shape="rect" coords="340,40,360,82" href="" target="janela" alt="115" title="Vaga 115"/>
-        <area shape="rect" coords="360,40,382,82" href="" target="janela" alt="414" title="Vaga 414"/>
-        <area shape="rect" coords="382,40,403,82" href="" target="janela" alt="404" title="Vaga 104"/>
-        <area shape="rect" coords="403,40,425,82" href="" target="janela" alt="306" title="Vaga 306"/>
-        <area shape="rect" coords="424,40,446,82" href="" target="janela" alt="213" title="Vaga 213"/>
-        <area shape="rect" coords="446,40,467,82" href="" target="janela" alt="220" title="Vaga 220"/>
-        <area shape="rect" coords="468,40,489,82" href="" target="janela" alt="310" title="Vaga 310"/>
-        <area shape="rect" coords="489,40,510,82" href="" target="janela" alt="417" title="Vaga 417"/>
-        <area shape="rect" coords="511,40,531,82" href="" target="janela" alt="418" title="Vaga 418"/>
-        <area shape="rect" coords="532,40,552,82" href="" target="janela" alt="113" title="Vaga 113"/>
-        <area shape="rect" coords="553,40,531,82" href="" target="janela" alt="112" title="Vaga 112"/>
-        <area shape="rect" coords="574,40,595,82" href="" target="janela" alt="110" title="Vaga 110"/>
-        <area shape="rect" coords="595,40,617,82" href="" target="janela" alt="208" title="Vaga 208"/>
-        <area shape="rect" coords="616,40,637,82" href="" target="janela" alt="203" title="Vaga 203"/>
-        <area shape="rect" coords="638,40,659,82" href="" target="janela" alt="407" title="Vaga 407"/>
-        <area shape="rect" coords="659,40,681,82" href="" target="janela" alt="108" title="Vaga 108"/>
-        <area shape="rect" coords="681,40,702,82" href="" target="janela" alt="310" title="Vaga 301"/>
-        <area shape="rect" coords="702,40,723,82" href="" target="janela" alt="403" title="Vaga 403"/>
-        <area shape="rect" coords="723,40,744,82" href="" target="janela" alt="401" title="Vaga 401"/>
-        <area shape="rect" coords="744,40,766,82" href="" target="janela" alt="303" title="Vaga 303"/>
-        <area shape="rect" coords="766,40,787,82" href="" target="janela" alt="304" title="Vaga 304"/>
-        <area shape="rect" coords="787,40,809,82" href="" target="janela" alt="103" title="Vaga 103"/>
-        <area shape="rect" coords="809,40,830,82" href="" target="janela" alt="202" title="Vaga 202"/>
-        <area shape="rect" coords="830,40,851,82" href="" target="janela" alt="404" title="Vaga 404"/>
-        <area shape="rect" coords="851,40,872,82" href="" target="janela" alt="402" title="Vaga 402"/>
-        <area shape="rect" coords="872,40,894,82" href="" target="janela" alt="201" title="Vaga 201"/>
-        <area shape="rect" coords="894,40,915,82" href="" target="janela" alt="101" title="Vaga 101"/>
-        <area shape="rect" coords="915,40,936,82" href="" target="janela" alt="102" title="Vaga 102"/>
+        <!-- Garagens Superior-->
+        <!-- 118 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "118" %}
+               {% if vaga.status == 'Disponivel' %}
+
+                 <a href="reservar_vaga" ><area shape="rect" coords="233,38,254,82" title="Vaga 118" id="118"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="233,38,254,82" title="Indisponivel" /></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="233,38,254,82" title="Aguardando Aprovação" /></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 419 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "419" %}
+               {% if vaga.status == 'Disponivel' %}
+                 <a href="reservar_vaga"><area shape="rect" coords="254,38,276,82" title="Vaga 419" id="419"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="254,38,276,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="254,38,276,82" title="Aguardando Aprovação" /></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 420 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "420" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="276,38,296,82" title="Vaga 420" id="420"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="276,38,296,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="276,38,296,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 214 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "214" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="297,40,318,82" title="Vaga 214" id="214"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="297,40,318,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="297,40,318,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 219 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "219" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="318,40,340,82" title="Vaga 219" id="219"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="318,40,340,82" title="Indisponivel" /></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="318,40,340,82" title="Aguardando Aprovação" /></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 115 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "115" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="340,40,360,82" title="Vaga 115" id="115"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="340,40,360,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="340,40,360,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 414 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "414" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="360,40,382,82" title="Vaga 414" id="414"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="360,40,382,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="360,40,382,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+           <!-- 104 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "104" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="382,40,403,82" title="Vaga 104" id="104"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="382,40,403,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="382,40,403,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 306 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "306" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="403,40,425,82" title="Vaga 306" id="306"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="403,40,425,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="403,40,425,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 213 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "213" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="424,40,446,82" title="Vaga 213" id="213"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="424,40,446,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="424,40,446,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 220 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "220" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="446,40,467,82" title="Vaga 220" id="220"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="446,40,467,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="446,40,467,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 310 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "310" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="468,40,489,82" title="Vaga 310" id="310"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="468,40,489,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="468,40,489,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 417 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "417" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="489,40,510,82" title="Vaga 417" id="417"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="489,40,510,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="489,40,510,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 418 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "418" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="511,40,531,82" title="Vaga 418" id="418"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="511,40,531,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="511,40,531,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 113 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "113" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="532,40,552,82" title="Vaga 113" id="113"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="532,40,552,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="532,40,552,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 112 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "112" %}
+               {% if vaga.status == 'Disponivel' %}
+                <a href="reservar_vaga"><area shape="rect" coords="552,40,574,82" title="Vaga 112" id="112"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="552,40,574,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="552,40,574,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 110 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "110" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="574,40,595,82" title="Vaga 110" id="110"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="574,40,595,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="574,40,595,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 208 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "208" %}
+               {% if vaga.status == 'Disponivel' %}
+                       <a href="reservar_vaga"><area shape="rect" coords="595,40,617,82" title="Vaga 208" id="208"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="595,40,617,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="595,40,617,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 203 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "203" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="616,40,637,82" title="Vaga 203" id="203"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="616,40,637,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="616,40,637,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 407 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "407" %}
+               {% if vaga.status == 'Disponivel' %}
+                       <a href="reservar_vaga"><area shape="rect" coords="638,40,659,82" title="Vaga 407" id="407"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="638,40,659,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="638,40,659,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 108 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "108" %}
+               {% if vaga.status == 'Disponivel' %}
+                       <a href="reservar_vaga"><area shape="rect" coords="659,40,681,82" title="Vaga 108" id="108"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="659,40,681,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="659,40,681,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 301 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "301" %}
+               {% if vaga.status == 'Disponivel' %}
+                       <a href="reservar_vaga"><area shape="rect" coords="681,40,702,82" title="Vaga 301" id="301"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="681,40,702,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="681,40,702,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 403 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "403" %}
+               {% if vaga.status == 'Disponivel' %}
+                       <a href="reservar_vaga"><area shape="rect" coords="702,40,723,82" title="Vaga 403" id="403"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="702,40,723,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="702,40,723,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 401 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "401" %}
+               {% if vaga.status == 'Disponivel' %}
+                       <a href="reservar_vaga"><area shape="rect" coords="723,40,744,82" title="Vaga 401" id="401"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="723,40,744,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="723,40,744,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 303 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "303" %}
+               {% if vaga.status == 'Disponivel' %}
+                       <a href="reservar_vaga"><area shape="rect" coords="744,40,766,82" title="Vaga 303" id="303"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="744,40,766,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="744,40,766,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 304 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "304" %}
+               {% if vaga.status == 'Disponivel' %}
+                               <a href="reservar_vaga"><area shape="rect" coords="766,40,787,82" title="Vaga 304" id="304"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="766,40,787,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="766,40,787,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 103 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "103" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="787,40,809,82" title="Vaga 103" id="103"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="787,40,809,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="787,40,809,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 202 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "202" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="809,40,830,82" title="Vaga 202" id="202"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="809,40,830,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="809,40,830,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 404 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "404" %}
+               {% if vaga.status == 'Disponivel' %}
+                           <a href="reservar_vaga"><area shape="rect" coords="830,40,851,82" title="Vaga 404" id="404"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="830,40,851,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="830,40,851,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 402 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "402" %}
+               {% if vaga.status == 'Disponivel' %}
+                      <a href="reservar_vaga"><area shape="rect" coords="851,40,872,82" title="Vaga 402" id="402"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="851,40,872,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="851,40,872,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 201 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "201" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="872,40,894,82" title="Vaga 201" id="201"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="872,40,894,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="872,40,894,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 101 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "101" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="894,40,915,82" title="Vaga 101"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="894,40,915,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="894,40,915,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 102 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "102" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="915,40,936,82" title="Vaga 102" id="102"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="915,40,936,82" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="915,40,936,82" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
 
         <!-- Garagens Lateral Esquerda-->
-        <area shape="rect" coords="233,246,275,155" href="" target="janela" alt="117" title="Vaga 117"/>
-        <area shape="rect" coords="233,155,275,173" href="" target="janela" alt="320" title="Vaga 320"/>
-        <area shape="rect" coords="233,173,275,191" href="" target="janela" alt="218" title="Vaga 218"/>
-        <area shape="rect" coords="233,192,275,210" href="" target="janela" alt="120" title="Vaga 120"/>
 
-        <area shape="rect" coords="233,246,275,264" href="" target="janela" alt="316" title="Vaga 316"/>
-        <area shape="rect" coords="233,265,275,282" href="" target="janela" alt="216" title="Vaga 216"/>
-        <area shape="rect" coords="233,282,275,301" href="" target="janela" alt="114" title="Vaga 114"/>
-        <area shape="rect" coords="233,301,275,318" href="" target="janela" alt="116" title="Vaga 116"/>
-        <area shape="rect" coords="233,319,275,336" href="" target="janela" alt="415" title="Vaga 415"/>
-        <area shape="rect" coords="233,338,275,356" href="" target="janela" alt="215" title="Vaga 215"/>
+            <!-- 117 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "117" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="233,137,275,155" title="Vaga 117" id="117"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="233,137,275,155" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="233,137,275,155" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
 
-        <area shape="rect" coords="318,137,360,155" href="" target="janela" alt="416" title="Vaga 416"/>
-        <area shape="rect" coords="318,155,360,173" href="" target="janela" alt="314" title="Vaga 314"/>
-        <area shape="rect" coords="318,174,360,191" href="" target="janela" alt="319" title="Vaga 319"/>
-        <area shape="rect" coords="318,192,360,210" href="" target="janela" alt="313" title="Vaga 313"/>
-        <area shape="rect" coords="318,210,361,228" href="" target="janela" alt="318" title="Vaga 318"/>
-        <area shape="rect" coords="361,137,403,155" href="" target="janela" alt="119" title="Vaga 119"/>
-        <area shape="rect" coords="361,155,403,173" href="" target="janela" alt="217" title="Vaga 217"/>
-        <area shape="rect" coords="361,174,403,191" href="" target="janela" alt="315" title="Vaga 315"/>
-        <area shape="rect" coords="361,192,403,210" href="" target="janela" alt="317" title="Vaga 317"/>
-        <area shape="rect" coords="361,210,403,228" href="" target="janela" alt="413" title="Vaga 413"/>
+            <!-- 320 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "320" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="233,155,275,173" title="Vaga 320" id="320"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="233,155,275,173" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="233,155,275,173" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 218 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "218" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="233,173,275,191" title="Vaga 218" id="218"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="233,173,275,191" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="233,173,275,191" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 120 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "120" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="233,192,275,210" title="Vaga 120" id="120"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="233,192,275,210" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="233,192,275,210" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 316 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "316" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="233,246,275,264" title="Vaga 316" id="316"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="233,246,275,264" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="233,246,275,264" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 216 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "216" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="233,265,275,282" title="Vaga 216" id="216"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="233,265,275,282" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="233,265,275,282" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 114 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "114" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="233,282,275,301" title="Vaga 114" id="114"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="233,282,275,301" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="233,282,275,301" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 116 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "116" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="233,301,275,318" title="Vaga 116" id="116"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="233,301,275,318" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="233,301,275,318" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 415 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "415" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="233,319,275,336" title="Vaga 415" id="415"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="233,319,275,336" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="233,319,275,336" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 215 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "215" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="233,338,275,356" title="Vaga 215" id="215"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="233,338,275,356" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="233,338,275,356" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 416 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "416" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="318,137,360,155" title="Vaga 416" id="416"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="318,137,360,155" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="318,137,360,155" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 314 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "314" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="318,155,360,173" title="Vaga 314" id="314"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="318,155,360,173" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="318,155,360,173" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 319 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "319" %}
+               {% if vaga.status == 'Disponivel' %}
+                  <a href="reservar_vaga"><area shape="rect" coords="318,174,360,191" title="Vaga 319" id="319"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="318,174,360,191" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="318,174,360,191" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 313 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "313" %}
+               {% if vaga.status == 'Disponivel' %}
+                  <a href="reservar_vaga"><area shape="rect" coords="318,192,360,210" title="Vaga 313" id="313"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="318,192,360,210" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="318,192,360,210" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 318 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "318" %}
+               {% if vaga.status == 'Disponivel' %}
+                  <a href="reservar_vaga"><area shape="rect" coords="318,210,361,228" title="Vaga 318" id="318"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="318,210,361,228" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="318,210,361,228" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 119 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "119" %}
+               {% if vaga.status == 'Disponivel' %}
+                  <a href="reservar_vaga"><area shape="rect" coords="361,137,403,155" title="Vaga 119" id="119"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="361,137,403,155" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="361,137,403,155" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 217 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "217" %}
+               {% if vaga.status == 'Disponivel' %}
+                  <a href="reservar_vaga"><area shape="rect" coords="361,155,403,173" title="Vaga 217" id="217"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="361,155,403,173" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="361,155,403,173" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 315 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "315" %}
+               {% if vaga.status == 'Disponivel' %}
+                  <a href="reservar_vaga"><area shape="rect" coords="361,174,403,191" title="Vaga 315" id="315"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="361,174,403,191" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="361,174,403,191" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 317 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "317" %}
+               {% if vaga.status == 'Disponivel' %}
+                  <a href="reservar_vaga"><area shape="rect" coords="361,192,403,210" title="Vaga 317" id="317"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="361,192,403,210" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="361,192,403,210" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 413 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "413" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="361,210,403,228" title="Vaga 413" id="413"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="361,210,403,228" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="361,210,403,228" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+
+
 
         <!-- Garagens Meio -->
-        <area shape="rect" coords="595,137,616,173" href="" target="janela" alt="105" title="Vaga 105"/>
-        <area shape="rect" coords="617,137,638,173" href="" target="janela" alt="408" title="Vaga 408"/>
-        <area shape="rect" coords="787,137,808,173" href="" target="janela" alt="204" title="Vaga 204"/>
-        <area shape="rect" coords="809,137,830,173" href="" target="janela" alt="302" title="Vaga 302"/>
+
+            <!-- 105 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "105" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="595,137,616,173" title="Vaga 105" id="105"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="595,137,616,173" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="595,137,616,173" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 408 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "408" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="617,137,638,173" title="Vaga 408" id="408"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="617,137,638,173" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="617,137,638,173" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 204 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "204" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="787,137,808,173" title="Vaga 204" id="204"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="787,137,808,173" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="787,137,808,173" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 302 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "302" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="809,137,830,173" title="Vaga 302" id="302"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="809,137,830,173" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="809,137,830,173" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+
 
         <!-- Garagens Inferior -->
-        <area shape="rect" coords="488,319,510,355" href="" target="janela" alt="309" title="Vaga 309"/>
-        <area shape="rect" coords="510,319,531,355" href="" target="janela" alt="411" title="Vaga 411"/>
-        <area shape="rect" coords="531,319,553,355" href="" target="janela" alt="212" title="Vaga 212"/>
-        <area shape="rect" coords="553,319,574,355" href="" target="janela" alt="412" title="Vaga 412"/>
-        <area shape="rect" coords="574,319,595,355" href="" target="janela" alt="312" title="Vaga 312"/>
-        <area shape="rect" coords="595,319,617,355" href="" target="janela" alt="308" title="Vaga 308"/>
-        <area shape="rect" coords="617,319,638,355" href="" target="janela" alt="307" title="Vaga 307"/>
-        <area shape="rect" coords="638,319,659,355" href="" target="janela" alt="207" title="Vaga 207"/>
-        <area shape="rect" coords="659,319,681,355" href="" target="janela" alt="107" title="Vaga 107"/>
-        <area shape="rect" coords="681,319,702,355" href="" target="janela" alt="406" title="Vaga 406"/>
-        <area shape="rect" coords="702,319,723,355" href="" target="janela" alt="405" title="Vaga 405"/>
 
-        <area shape="rect" coords="467,392,488,428" href="" target="janela" alt="210" title="Vaga 210"/>
-        <area shape="rect" coords="489,392,510,428" href="" target="janela" alt="109" title="Vaga 109"/>
-        <area shape="rect" coords="510,392,532,428" href="" target="janela" alt="209" title="Vaga 209"/>
-        <area shape="rect" coords="532,392,553,428" href="" target="janela" alt="211" title="Vaga 211"/>
-        <area shape="rect" coords="553,392,574,428" href="" target="janela" alt="311" title="Vaga 311"/>
-        <area shape="rect" coords="574,392,595,428" href="" target="janela" alt="111" title="Vaga 111"/>
-        <area shape="rect" coords="595,392,617,428" href="" target="janela" alt="410" title="Vaga 410"/>
-        <area shape="rect" coords="617,392,638,428" href="" target="janela" alt="206" title="Vaga 206"/>
-        <area shape="rect" coords="638,392,659,428" href="" target="janela" alt="409" title="Vaga 409"/>
-        <area shape="rect" coords="659,392,680,428" href="" target="janela" alt="205" title="Vaga 205"/>
-        <area shape="rect" coords="680,392,702,428" href="" target="janela" alt="106" title="Vaga 106"/>
-        <area shape="rect" coords="702,392,723,428" href="" target="janela" alt="305" title="Vaga 305"/>
+        <!-- 309 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "309" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="488,319,510,355" title="Vaga 309" id="309"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="488,319,510,355" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="488,319,510,355" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
 
+            <!-- 411 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "411" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="510,319,531,355" title="Vaga 411" id="411"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="510,319,531,355" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="510,319,531,355" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 212 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "212" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="531,319,553,355" title="Vaga 212" id="212"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="510,319,531,355" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="510,319,531,355" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 412 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "412" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="553,319,574,355" title="Vaga 412" id="412"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="553,319,574,355" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="553,319,574,355" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 312 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "312" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="574,319,595,355" title="Vaga 312" id="312"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="574,319,595,355" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="574,319,595,355" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 308 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "308" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="595,319,617,355" title="Vaga 308" id="308"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="595,319,617,355" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="595,319,617,355" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 307 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "307" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="617,319,638,355" title="Vaga 307" id="307"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="617,319,638,355" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="617,319,638,355" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 207 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "207" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="638,319,659,355" title="Vaga 207" id="207"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="638,319,659,355" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="638,319,659,355" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 107 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "107" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="659,319,681,355" title="Vaga 107" id="107"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="659,319,681,355" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="659,319,681,355" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 406 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "406" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="681,319,702,355" title="Vaga 406" id="406"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="681,319,702,355" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="681,319,702,355" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 405 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "405" %}
+               {% if vaga.status == 'Disponivel' %}
+                    <a href="reservar_vaga"><area shape="rect" coords="702,319,723,355" title="Vaga 405" id="405"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="702,319,723,355" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="702,319,723,355" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 210 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "210" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="467,392,488,428" title="Vaga 210" id="210"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="467,392,488,428" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="467,392,488,428" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 109 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "109" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="489,392,510,428" title="Vaga 109" id="109"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="489,392,510,428" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="489,392,510,428" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 209 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "209" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="510,392,532,428" title="Vaga 209" id="209"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="510,392,532,428" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="510,392,532,428" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 211 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "211" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="532,392,553,428" title="Vaga 211" id="211"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="532,392,553,428" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="532,392,553,428" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 311 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "311" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="553,392,574,428" title="Vaga 311" id="311"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="553,392,574,428" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="553,392,574,428" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 111 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "111" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="574,392,595,428" title="Vaga 111" id="111"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="574,392,595,428" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="574,392,595,428" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 410 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "410" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="595,392,617,428" title="Vaga 410" id="410"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="595,392,617,428"  title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="595,392,617,428"  title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 206 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "206" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="617,392,638,428" title="Vaga 206" id="206"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="617,392,638,428"  title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="617,392,638,428"  title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 409 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "409" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="638,392,659,428" title="Vaga 409" id="409"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="638,392,659,428"  title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="638,392,659,428"  title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 205 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "205" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="659,392,680,428" title="Vaga 205" id="205"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="659,392,680,428" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="659,392,680,428"  title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 106 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "106" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="680,392,702,428" title="Vaga 106" id="106"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="680,392,702,428" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="680,392,702,428" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- 305 -->
+            {%for vaga in garagemI %}
+              {% if vaga.vaga == "305" %}
+               {% if vaga.status == 'Disponivel' %}
+                   <a href="reservar_vaga"><area shape="rect" coords="702,392,723,428" title="Vaga 305" id="305"/></a>
+               {% endif %}
+               {% if vaga.status == 'Indisponivel' %}
+                 <a href=""><area shape="rect" coords="702,392,723,428" title="Indisponivel"/></a>
+               {% endif %}
+               {% if vaga.status == 'Aguardando Aprovação' %}
+                 <a href=""><area shape="rect" coords="702,392,723,428" title="Aguardando Aprovação"/></a>
+               {% endif %}
+              {% endif %}
+            {% endfor %}
 
         <!-- Salão de Festas -->
-        <a href="#" data-toggle="modal" data-target="#salaoModal">
-            <area shape="rect" coords="318,301,403,391" href="" target="janela" alt="Salão de Festas"
-                  title="Salão de Festas"/>
-        </a>
+        <a href="reservar_salao"><area shape="rect" coords="318,301,403,391" title="Salão de Festas"/></a>
 
-        <img src="{% static 'img/planta.jpg'%}" usemap="#minhaplanta">
+           <img src="{% static 'img/planta.jpg'%}" usemap="#minhaplanta">
     </map>
-</div>
-
-<!--  Inicio Rodapé -->
-<div class="footer fixed-bottom" id="preto">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                © 2021 Copyright - Consys - Sistema de Gerenciamento de Condominios
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                <div class="text-md-right footer-links d-none d-sm-block">
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Modal  Vaga-->
-<div class="modal fade" id="vagaModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h2 class="modal-title">Reservar Vaga</h2>
-            </div>
-
-            <div class="modal-body">
-
-                <h6>Selecione a Vaga:</h6>
-                <select class="form-control">
-                    <option>101</option>
-                    <option>102</option>
-                    <option>103</option>
-                    <option>104</option>
-                    <option>105</option>
-                </select> </br>
-
-                <h6>Data Inicio:</h6>
-                <input type="date" class="form-control" aria-label="Small">
-
-                <h6>Data Temino:</h6>
-                <input type="date" class="form-control" aria-label="Small">
-
-                <h6>Observações:</h6>
-                <textarea class="form-control" rows="3"></textarea></br>
-
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary">Reservar Vaga</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Modal  Salão-->
-<div class="modal fade" id="salaoModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h2 class="modal-title">Reservar Salão de Festa</h2>
-            </div>
-
-            <div class="modal-body">
-
-                <h6>Data Inicio:</h6>
-                <input type="date" class="form-control" aria-label="Small">
-
-                <h6>Data Temino:</h6>
-                <input type="date" class="form-control" aria-label="Small">
-
-                <h6>Observações:</h6>
-                <textarea class="form-control" rows="3"></textarea></br>
-
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary">Reservar Salão</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-</body>
-</html>
+{% endblock %}

@@ -1,6 +1,6 @@
 Endereço Herokuapp: https://projeto-consys.herokuapp.com/
 
-Usuarios Administradores:
+Usuarios com acesso de Administrador:
 jacson
 Python@123
 
@@ -8,7 +8,7 @@ roseli
 Python@123
 
 
-Usuarios comuns:
+Usuarios comuns para efetuar reservas:
 adriano
 Python@123
 

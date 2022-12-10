@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CONSYS - Sistema de Gerenciamento de Condominios</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estiloindex.css' %}">
+
+    <!-- JAVA -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <style>
+        .fixed-bottom {
+              position: fixed;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              z-index: 1030;
+        }
+    </style>
+
+</head>
+<body>
+<!-- Inicio Topo -->
+<div>
+    <h1 id="area-logo"><strong>CON<span class="azul">SYS</span></strong></h1>
+    <p>Sistema de Gerenciamento de Condominios</p>
+</div>
+<!-- Fim Topo -->
+
+
+<!-- Inicio Menu -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Cliente<span
+                    class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Novo Cliente</a></li>
+                    <li><a href="#">Listar Clientes</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Locação<span
+                    class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" data-toggle="modal" data-target="#vagaModal">Vaga de Garagens</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#salaoModal">Salão de Festas</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Reserva<span
+                    class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">À aprovar</a></li>
+                    <li><a href="#">Aprovados</a></li>
+                    <li><a href="#">Listar Reservas</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/logout/">Sair</a></li>
+        </ul>
+    </div>
+</nav>
+<!-- Fim Menu -->
+
+<!-- Alinhamento Centro Imagem -->
+<div class="container" style="margin-top:30px">
+
+    <!-- Mapeamento Imagem -->
+    <map name="minhaplanta">
+        <!-- Garagens Superior-->
+
+        <a href="#" data-toggle="modal" data-target="#vagaModal"><area shape="rect" coords="233,38,254,82" target="janela" alt="118" title="Vaga 118"/></a>
+        <a href="#" data-toggle="modal" data-target="#vagaModal"><area shape="rect" coords="254,38,276,82" target="janela" alt="419" title="Vaga 419"/></a>
+        <area shape="rect" coords="276,38,296,82" href="" target="janela" alt="420" title="Vaga 420"/>
+        <area shape="rect" coords="297,40,318,82" href="" target="janela" alt="214" title="Vaga 214"/>
+        <area shape="rect" coords="318,40,340,82" href="" target="janela" alt="219" title="Vaga 219"/>
+        <area shape="rect" coords="340,40,360,82" href="" target="janela" alt="115" title="Vaga 115"/>
+        <area shape="rect" coords="360,40,382,82" href="" target="janela" alt="414" title="Vaga 414"/>
+        <area shape="rect" coords="382,40,403,82" href="" target="janela" alt="404" title="Vaga 104"/>
+        <area shape="rect" coords="403,40,425,82" href="" target="janela" alt="306" title="Vaga 306"/>
+        <area shape="rect" coords="424,40,446,82" href="" target="janela" alt="213" title="Vaga 213"/>
+        <area shape="rect" coords="446,40,467,82" href="" target="janela" alt="220" title="Vaga 220"/>
+        <area shape="rect" coords="468,40,489,82" href="" target="janela" alt="310" title="Vaga 310"/>
+        <area shape="rect" coords="489,40,510,82" href="" target="janela" alt="417" title="Vaga 417"/>
+        <area shape="rect" coords="511,40,531,82" href="" target="janela" alt="418" title="Vaga 418"/>
+        <area shape="rect" coords="532,40,552,82" href="" target="janela" alt="113" title="Vaga 113"/>
+        <area shape="rect" coords="553,40,531,82" href="" target="janela" alt="112" title="Vaga 112"/>
+        <area shape="rect" coords="574,40,595,82" href="" target="janela" alt="110" title="Vaga 110"/>
+        <area shape="rect" coords="595,40,617,82" href="" target="janela" alt="208" title="Vaga 208"/>
+        <area shape="rect" coords="616,40,637,82" href="" target="janela" alt="203" title="Vaga 203"/>
+        <area shape="rect" coords="638,40,659,82" href="" target="janela" alt="407" title="Vaga 407"/>
+        <area shape="rect" coords="659,40,681,82" href="" target="janela" alt="108" title="Vaga 108"/>
+        <area shape="rect" coords="681,40,702,82" href="" target="janela" alt="310" title="Vaga 301"/>
+        <area shape="rect" coords="702,40,723,82" href="" target="janela" alt="403" title="Vaga 403"/>
+        <area shape="rect" coords="723,40,744,82" href="" target="janela" alt="401" title="Vaga 401"/>
+        <area shape="rect" coords="744,40,766,82" href="" target="janela" alt="303" title="Vaga 303"/>
+        <area shape="rect" coords="766,40,787,82" href="" target="janela" alt="304" title="Vaga 304"/>
+        <area shape="rect" coords="787,40,809,82" href="" target="janela" alt="103" title="Vaga 103"/>
+        <area shape="rect" coords="809,40,830,82" href="" target="janela" alt="202" title="Vaga 202"/>
+        <area shape="rect" coords="830,40,851,82" href="" target="janela" alt="404" title="Vaga 404"/>
+        <area shape="rect" coords="851,40,872,82" href="" target="janela" alt="402" title="Vaga 402"/>
+        <area shape="rect" coords="872,40,894,82" href="" target="janela" alt="201" title="Vaga 201"/>
+        <area shape="rect" coords="894,40,915,82" href="" target="janela" alt="101" title="Vaga 101"/>
+        <area shape="rect" coords="915,40,936,82" href="" target="janela" alt="102" title="Vaga 102"/>
+
+        <!-- Garagens Lateral Esquerda-->
+        <area shape="rect" coords="233,246,275,155" href="" target="janela" alt="117" title="Vaga 117"/>
+        <area shape="rect" coords="233,155,275,173" href="" target="janela" alt="320" title="Vaga 320"/>
+        <area shape="rect" coords="233,173,275,191" href="" target="janela" alt="218" title="Vaga 218"/>
+        <area shape="rect" coords="233,192,275,210" href="" target="janela" alt="120" title="Vaga 120"/>
+
+        <area shape="rect" coords="233,246,275,264" href="" target="janela" alt="316" title="Vaga 316"/>
+        <area shape="rect" coords="233,265,275,282" href="" target="janela" alt="216" title="Vaga 216"/>
+        <area shape="rect" coords="233,282,275,301" href="" target="janela" alt="114" title="Vaga 114"/>
+        <area shape="rect" coords="233,301,275,318" href="" target="janela" alt="116" title="Vaga 116"/>
+        <area shape="rect" coords="233,319,275,336" href="" target="janela" alt="415" title="Vaga 415"/>
+        <area shape="rect" coords="233,338,275,356" href="" target="janela" alt="215" title="Vaga 215"/>
+
+        <area shape="rect" coords="318,137,360,155" href="" target="janela" alt="416" title="Vaga 416"/>
+        <area shape="rect" coords="318,155,360,173" href="" target="janela" alt="314" title="Vaga 314"/>
+        <area shape="rect" coords="318,174,360,191" href="" target="janela" alt="319" title="Vaga 319"/>
+        <area shape="rect" coords="318,192,360,210" href="" target="janela" alt="313" title="Vaga 313"/>
+        <area shape="rect" coords="318,210,361,228" href="" target="janela" alt="318" title="Vaga 318"/>
+        <area shape="rect" coords="361,137,403,155" href="" target="janela" alt="119" title="Vaga 119"/>
+        <area shape="rect" coords="361,155,403,173" href="" target="janela" alt="217" title="Vaga 217"/>
+        <area shape="rect" coords="361,174,403,191" href="" target="janela" alt="315" title="Vaga 315"/>
+        <area shape="rect" coords="361,192,403,210" href="" target="janela" alt="317" title="Vaga 317"/>
+        <area shape="rect" coords="361,210,403,228" href="" target="janela" alt="413" title="Vaga 413"/>
+
+        <!-- Garagens Meio -->
+        <area shape="rect" coords="595,137,616,173" href="" target="janela" alt="105" title="Vaga 105"/>
+        <area shape="rect" coords="617,137,638,173" href="" target="janela" alt="408" title="Vaga 408"/>
+        <area shape="rect" coords="787,137,808,173" href="" target="janela" alt="204" title="Vaga 204"/>
+        <area shape="rect" coords="809,137,830,173" href="" target="janela" alt="302" title="Vaga 302"/>
+
+        <!-- Garagens Inferior -->
+        <area shape="rect" coords="488,319,510,355" href="" target="janela" alt="309" title="Vaga 309"/>
+        <area shape="rect" coords="510,319,531,355" href="" target="janela" alt="411" title="Vaga 411"/>
+        <area shape="rect" coords="531,319,553,355" href="" target="janela" alt="212" title="Vaga 212"/>
+        <area shape="rect" coords="553,319,574,355" href="" target="janela" alt="412" title="Vaga 412"/>
+        <area shape="rect" coords="574,319,595,355" href="" target="janela" alt="312" title="Vaga 312"/>
+        <area shape="rect" coords="595,319,617,355" href="" target="janela" alt="308" title="Vaga 308"/>
+        <area shape="rect" coords="617,319,638,355" href="" target="janela" alt="307" title="Vaga 307"/>
+        <area shape="rect" coords="638,319,659,355" href="" target="janela" alt="207" title="Vaga 207"/>
+        <area shape="rect" coords="659,319,681,355" href="" target="janela" alt="107" title="Vaga 107"/>
+        <area shape="rect" coords="681,319,702,355" href="" target="janela" alt="406" title="Vaga 406"/>
+        <area shape="rect" coords="702,319,723,355" href="" target="janela" alt="405" title="Vaga 405"/>
+
+        <area shape="rect" coords="467,392,488,428" href="" target="janela" alt="210" title="Vaga 210"/>
+        <area shape="rect" coords="489,392,510,428" href="" target="janela" alt="109" title="Vaga 109"/>
+        <area shape="rect" coords="510,392,532,428" href="" target="janela" alt="209" title="Vaga 209"/>
+        <area shape="rect" coords="532,392,553,428" href="" target="janela" alt="211" title="Vaga 211"/>
+        <area shape="rect" coords="553,392,574,428" href="" target="janela" alt="311" title="Vaga 311"/>
+        <area shape="rect" coords="574,392,595,428" href="" target="janela" alt="111" title="Vaga 111"/>
+        <area shape="rect" coords="595,392,617,428" href="" target="janela" alt="410" title="Vaga 410"/>
+        <area shape="rect" coords="617,392,638,428" href="" target="janela" alt="206" title="Vaga 206"/>
+        <area shape="rect" coords="638,392,659,428" href="" target="janela" alt="409" title="Vaga 409"/>
+        <area shape="rect" coords="659,392,680,428" href="" target="janela" alt="205" title="Vaga 205"/>
+        <area shape="rect" coords="680,392,702,428" href="" target="janela" alt="106" title="Vaga 106"/>
+        <area shape="rect" coords="702,392,723,428" href="" target="janela" alt="305" title="Vaga 305"/>
+
+
+        <!-- Salão de Festas -->
+        <a href="#" data-toggle="modal" data-target="#salaoModal">
+            <area shape="rect" coords="318,301,403,391" href="" target="janela" alt="Salão de Festas"
+                  title="Salão de Festas"/>
+        </a>
+
+        <img src="{% static 'img/planta.jpg'%}" usemap="#minhaplanta">
+    </map>
+</div>
+
+<!--  Inicio Rodapé -->
+<div class="footer fixed-bottom" id="preto">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                © 2021 Copyright - Consys - Sistema de Gerenciamento de Condominios
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="text-md-right footer-links d-none d-sm-block">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal  Vaga-->
+<div class="modal fade" id="vagaModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h2 class="modal-title">Reservar Vaga</h2>
+            </div>
+
+            <div class="modal-body">
+
+                <h6>Selecione a Vaga:</h6>
+                <select class="form-control">
+                    <option>101</option>
+                    <option>102</option>
+                    <option>103</option>
+                    <option>104</option>
+                    <option>105</option>
+                </select> </br>
+
+                <h6>Data Inicio:</h6>
+                <input type="date" class="form-control" aria-label="Small">
+
+                <h6>Data Temino:</h6>
+                <input type="date" class="form-control" aria-label="Small">
+
+                <h6>Observações:</h6>
+                <textarea class="form-control" rows="3"></textarea></br>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary">Reservar Vaga</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal  Salão-->
+<div class="modal fade" id="salaoModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h2 class="modal-title">Reservar Salão de Festa</h2>
+            </div>
+
+            <div class="modal-body">
+
+                <h6>Data Inicio:</h6>
+                <input type="date" class="form-control" aria-label="Small">
+
+                <h6>Data Temino:</h6>
+                <input type="date" class="form-control" aria-label="Small">
+
+                <h6>Observações:</h6>
+                <textarea class="form-control" rows="3"></textarea></br>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary">Reservar Salão</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

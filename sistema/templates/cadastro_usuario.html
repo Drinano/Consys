@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block conteudo_janela %}
+
+<style>
+    .page-header{
+          margin: 0px;
+          padding: 0px;
+    }
+</style>
+
+<div class="page-header">
+    <h3 class="mb-3">Cadastrar Usuário</h3>
+</div>
+
+<form method="post">
+    {% csrf_token %}
+
+    <div class="form-group col-md-4">
+        {{form_usuario.username.errors}}
+        <br/> <label>Usuário:</label>
+        <input type="text" required="required" class="form-control" id="{{form_usuario.username}}
+    </div>
+
+    <div class="form-group col-md-4">
+        {{form_usuario.password1.errors}}
+        <br/> <label>Senha:</label>
+        <input type="password" required="required" class="form-control" id="{{form_usuario.password1}}
+    </div>
+
+    <div class="form-group col-md-4">
+        {{form_usuario.password2.errors}}
+        <br/> <label>Confirmar Senha:</label>
+        <input type="password" required="required" class="form-control" id="{{form_usuario.password2}}
+    </div>
+
+    </br>
+
+    <div class="form-group">
+        <input type="submit" value="Cadastrar" class="btn btn-success navbar-right">
+    </div>
+</form>
+
+{% endblock %}

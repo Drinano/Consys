@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block conteudo_janela %}
+
+<style>
+    .page-header{
+          margin: 0px;
+          padding: 0px;
+    }
+</style>
+
+<div class="page-header">
+    <h3 class="mb-3">Aprovação de Reserva do Salão de Festas.</h3>
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    <h2>Deseja aprovar a reserva <strong>{{ form.status }}</strong> ?</h2>
+
+    </br>
+
+    <a href="{% url 'aprovar' %}" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+    <button type="submit" class="btn btn-success navbar-right"><i class="fa fa-check" aria-hidden="true"></i> Confirmar
+    </button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block conteudo_janela %}
+
+<style>
+    .page-header{
+          margin: 0px;
+          padding: 0px;
+    }
+</style>
+
+<div class="page-header">
+    <h3 class="mb-3">Cadastro de Cliente</h3>
+</div>
+
+<form action="/cadastrar" method="post">{% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <br/> <label for="nome"><b>Nome: </b></label>
+            <input type="text" name="nome" required="required" class="form-control" placeholder="Nome Sobrenome"
+                   value="{% if cliente %}{{cliente.nome}}{% endif %}">
+        </div>
+
+        <div class="form-group col-md-6">
+            <br/> <label for="email"><b>E-mail: </b></label>
+            <input type="email" name="email" required="required" class="form-control" placeholder="exemplo@exemplo"
+                   value="{% if cliente %}{{cliente.email}}{% endif %}">
+        </div>
+
+        <div class="form-group col-md-6">
+            <br/> <label for="telefone"><b>Telefone / Celular: </b></label>
+            <input type="text" name="telefone" required="required" class="form-control" placeholder="(49) 9-9999-9999"
+                   value="{% if cliente %}{{cliente.telefone}}{% endif %}">
+        </div>
+
+        <div class="form-group col-md-4">
+            <br/> <label for="rg"><b>RG: </b></label>
+            <input type="text" name="rg" required="required" class="form-control" placeholder="0000000"
+                   value="{% if cliente %}{{cliente.rg}}{% endif %}">
+        </div>
+
+        <div class="form-group col-md-4">
+            <br/><label for="cpf"><b>CPF: </b></label>
+            <input type="text" name="cpf" required="required" class="form-control" placeholder="000.000.000-00"
+                   value="{% if cliente %}{{cliente.cpf}}{% endif %}">
+        </div>
+
+        <div class="form-group col-md-4">
+            <br/><label for="ap"><b>Número AP: </b></label>
+            <input type="text" name="ap" required="required" class="form-control" placeholder="000"
+                   value="{% if cliente %}{{cliente.ap}}{% endif %}">
+        </div>
+    </div>
+
+        <div>
+            <a href="{% url 'index' %}" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+            <button type="reset" class="btn btn-secondary"><i class="fa fa-broom" aria-hidden="true"></i> Limpar</button>
+            <button type="submit" value="submit" class="btn btn-success navbar-right">Cadastrar</button>
+        </div>
+
+</form>
+
+{% endblock %}

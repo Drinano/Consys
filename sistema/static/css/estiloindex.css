@@ -1,0 +1,21 @@
+.azul{
+      color: #2ECCFA;
+      padding: 10px;
+}
+
+#area-logo{
+      padding: 0px 0px 0px 20px;
+      text-align: left;
+}
+
+p{
+      text-align: left;
+      padding: 0px 0px 5px 20px;
+      font-size: 1em;
+}
+
+#preto{
+      background: black;
+      color: #6c757d;
+      padding: 5px;
+}

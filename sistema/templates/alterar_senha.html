@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block conteudo_janela %}
+
+<style>
+    .page-header{
+          margin: 0px;
+          padding: 0px;
+    }
+</style>
+
+<div class="page-header">
+    <h3 class="mb-3">Alterar Senha.</h3>
+</div>
+
+<form method="post">
+    {% csrf_token %}
+
+    <div class="form-group col-md-12">
+        {{form_senha.old_password.errors}}
+       <br><label>Senha Antiga:</label>
+        {{form_senha.old_password}}
+    </div>
+
+    <div class="form-group col-md-12">
+        {{form_senha.new_password1.errors}}
+        <label>Nova senha: </label>
+        {{form_senha.new_password1}}
+    </div>
+
+    <div class="form-group col-md-12">
+        {{form_senha.new_password2.errors}}
+        <label>Confirmar Senha: </label>
+        {{form_senha.new_password2}}
+    </div>
+
+    <div class="form-group">
+        <a href="{% url 'index' %}" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+        <input type="submit" value="Alterar" class="btn btn-success">
+    </div>
+</form>
+
+{% endblock %}
